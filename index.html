@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Nick Game - Uy Tín #1 Việt Nam</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            SHOP NICK GAME
+          </div>
+          <nav class="nav">
+            <a href="#"><i class="fas fa-home"></i> Trang chủ</a>
+            <a href="#"><i class="fas fa-fire"></i> Hot</a>
+            <a href="#"><i class="fas fa-star"></i> VIP</a>
+            <a href="#"><i class="fas fa-phone"></i> Liên hệ</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>🎮 Shop Nick Game Uy Tín #1 🎮</h1>
+        <p>Mua bán nick game Ngọc Rồng, Ninja School, và nhiều game khác</p>
+
+        <div class="search-bar">
+          <input type="text" placeholder="Tìm kiếm nick game..." />
+          <button><i class="fas fa-search"></i> Tìm kiếm</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Nick đã bán</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3500+</div>
+            <div class="stat-label">Khách hàng</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Uy tín</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="container">
+      <div class="filters">
+        <button class="filter-btn active">Tất cả</button>
+        <button class="filter-btn">Ngọc Rồng Online</button>
+        <button class="filter-btn">Ninja School</button>
+        <button class="filter-btn">Liên Quân Mobile</button>
+        <button class="filter-btn">Freefire</button>
+        <button class="filter-btn">PUBG Mobile</button>
+      </div>
+
+      <div class="products" id="products">
+        <!-- Products will be inserted here by JavaScript -->
+      </div>
+    </main>
+
+    <script>
+      const products = [
+        {
+          game: "Ngọc Rồng Online",
+          title: "Nick Ngọc Rồng VIP - Saiyan Max",
+          details: "• Sức mạnh: 15 tỷ\n• Đệ tử: 5 con max\n• Pet: 3 con event",
+          price: "150.000đ",
+          icon: "🐉",
+        },
+        {
+          game: "Ninja School",
+          title: "Nick Ninja Trùm Cuối",
+          details: "• Level: 120\n• Trang bị: Full set +16\n• Xu: 50 triệu",
+          price: "200.000đ",
+          icon: "🥷",
+        },
+        {
+          game: "Ngọc Rồng Online",
+          title: "Nick Ngọc Rồng Giá Rẻ",
+          details:
+            "• Sức mạnh: 5 tỷ\n• Đệ tử: 3 con\n• Trang bị: Set đồ 12 sao",
+          price: "50.000đ",
+          icon: "🐉",
+        },
+        {
+          game: "Ninja School",
+          title: "Nick Ninja Học Sinh",
+          details: "• Level: 80\n• Trang bị: Set +12\n• Xu: 20 triệu",
+          price: "80.000đ",
+          icon: "!--",
+        },
+        {
+          game: "Liên Quân Mobile",
+          title: "Nick Liên Quân Cao Thủ",
+          details: "• Rank: Cao Thủ\n• Tướng: 80+\n• Skin: 50+",
+          price: "120.000đ",
+          icon: "⚔️",
+        },
+        {
+          game: "Freefire",
+          title: "Nick Freefire VIP Max",
+          details: "• Level: 70\n• Pet: Full\n• Skin súng: 30+",
+          price: "90.000đ",
+          icon: "🔫",
+        },
+        {
+          game: "PUBG Mobile",
+          title: "Nick PUBG Ace Cao Thủ",
+          details: "• Rank: Ace\n• UC: 5000\n• Skin: Mythic",
+          price: "180.000đ",
+          icon: "🎯",
+        },
+        {
+          game: "Ngọc Rồng Online",
+          title: "Nick Ngọc Rồng Event",
+          details: "• Sức mạnh: 20 tỷ\n• Full đồ event\n• Pet: Full event",
+          price: "350.000đ",
+          icon: "🐉",
+        },
+        {
+          game: "Ninja School",
+          title: "Nick Ninja Siêu VIP",
+          details: "• Level: 140\n• Full set +18\n• Xu: 100 triệu",
+          price: "400.000đ",
+          icon: "🥷",
+        },
+      ];
+
+      function renderProducts(filter = "Tất cả") {
+        const container = document.getElementById("products");
+        const filtered =
+          filter === "Tất cả"
+            ? products
+            : products.filter((p) => p.game === filter);
+
+        container.innerHTML = filtered
+          .map(
+            (product) => `
+                <div class="product-card">
+                    <div class="product-image">${product.icon}</div>
+                    <div class="product-info">
+                        <span class="product-game">${product.game}</span>
+                        <h3 class="product-title">${product.title}</h3>
+                        <div class="product-details">${product.details.replace(
+                          /\n/g,
+                          "<br>"
+                        )}</div>
+                        <div class="product-footer">
+                            <span class="price">${product.price}</span>
+                            <button class="buy-btn" onclick="buyProduct('${
+                              product.title
+                            }')">
+                                <i class="fas fa-shopping-cart"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      function buyProduct(title) {
+        alert(
+          `Bạn đã chọn mua: ${title}\n\nVui lòng liên hệ:\n📱 Hotline: 0396784806\n💬 Zalo: 0396784806\n📧 Email: anhtamhx357@gmail.com`
+        );
+      }
+
+      // Filter buttons
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          renderProducts(this.textContent);
+        });
+      });
+
+      // Initial render
+      renderProducts();
+    </script>
+  </body>
+</html>
